@@ -37,13 +37,20 @@ ADD tty.js /tty.js/
 RUN apt-get clean
 #RUN rm /etc/apt/apt.conf.d/90apt-cacher-ng
 
+
+############################
+##add hypercli
+ENV ACCESS_KEY ${ACCESS_KEY:-}
+ENV SECRET_KEY ${SECRET_KEY:-}
+ENV USER_NAME ${USER_NAME:-ubuntu}
+
+RUN apt-get install -y wget
+RUN wget http://hyper-install.s3.amazonaws.com/hyper-linux-x86_64.tar.gz -O /tmp/hyper-linux-x86_64.tar.gz \
+&& tar xzvf /tmp/hyper-linux-x86_64.tar.gz -C /usr/bin && chmod +x /usr/bin/hyper
+
+############################
 ADD startup.sh /
 #EXPOSE 22
 EXPOSE 3000
 WORKDIR /
 ENTRYPOINT ["/startup.sh"]
-
-##add hypercli
-RUN apt-get install -y wget
-RUN wget http://hyper-install.s3.amazonaws.com/hyper-linux-x86_64.tar.gz -O /tmp/hyper-linux-x86_64.tar.gz \
-&& tar xzvf /tmp/hyper-linux-x86_64.tar.gz -C /usr/bin

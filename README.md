@@ -1,6 +1,8 @@
 run ttyjs in docker container
 =============================
 
+hypercli + tty.js(0.2.13)
+
 # Build
 ```
 $ git clone https://github.com/Jimmy-Xu/docker-ttyjs.git
@@ -16,7 +18,6 @@ User: ubuntu Pass: M2Y0YT
 ```
 
 ![](screenshots/ttyjs.png)
-
 
 # Debug
 ```
