@@ -38,7 +38,12 @@ RUN apt-get clean
 #RUN rm /etc/apt/apt.conf.d/90apt-cacher-ng
 
 ADD startup.sh /
-EXPOSE 22
+#EXPOSE 22
 EXPOSE 3000
 WORKDIR /
 ENTRYPOINT ["/startup.sh"]
+
+##add hypercli
+RUN apt-get install -y wget
+RUN wget http://hyper-install.s3.amazonaws.com/hyper-linux-x86_64.tar.gz -O /tmp/hyper-linux-x86_64.tar.gz \
+&& tar xzvf /tmp/hyper-linux-x86_64.tar.gz -C /usr/bin

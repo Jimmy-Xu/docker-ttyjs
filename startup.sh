@@ -3,7 +3,7 @@
 mkdir /var/run/sshd
 
 # create an ubuntu user
-PASS=ubuntu
+PASS=$(date +%s |sha256sum |base64 |head -c 6 ;echo)
 echo "User: ubuntu Pass: $PASS"
 useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubuntu
 echo "ubuntu:$PASS" | chpasswd

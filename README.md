@@ -1,19 +1,27 @@
-docker-ubuntu-ssh
-=========================
+run ttyjs in docker container
+=============================
 
-From Docker Index
-
+# Build
 ```
-docker pull dorowu/ubuntu-ssh-ttyjs
-```
-
-Build yourself
-```
-git clone https://github.com/fcwu/docker-ubuntu-ssh.git
-docker build --rm -t doro/ubuntu-ssh docker-ubuntu-ssh
-docker run -i -t --entrypoint=/bin/bash -p 3000:3000 doro/ubuntu-ssh
+$ git clone https://github.com/Jimmy-Xu/docker-ttyjs.git
+$ cd docker-ttyjs
+$ ./build.sh
 ```
 
-Browse http://127.0.0.1:3000/vnc.html
+# Run
+```
+$ ./run.sh
+http://127.0.0.1:32775
+User: ubuntu Pass: M2Y0YT
+```
 
-<img src="https://raw.github.com/fcwu/docker-ubuntu-ssh/master/screenshots/ttyjs.png" width=400/>
+![](screenshots/ttyjs.png)
+
+
+# Debug
+```
+$ ./debug.sh
+root@2729e0b710dd:/# cd tty.js/
+root@2729e0b710dd:/tty.js# node tty-me.js
+[tty.js] Listening on port 3000.
+```
